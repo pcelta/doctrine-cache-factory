@@ -1,0 +1,36 @@
+{
+    "name": "pcelta/doctrine-cache-factory",
+    "description": "A Doctrine Cache Factory",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "doctrine",
+        "cache",
+        "pcelta"
+    ],
+    "authors": [
+        {
+          "name": "Pedro Ribeiro da Silva Neto",
+          "email": "pcelta.ribeiro@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "doctrine/cache": "v1.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "@stable",
+        "fabpot/php-cs-fixer": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pcelta\\Doctrine\\Cache\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+           "Pcelta\\Doctrine\\Cache\\": "tests/"
+        }
+    }
+}
