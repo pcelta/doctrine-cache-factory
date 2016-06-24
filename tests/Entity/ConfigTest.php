@@ -13,9 +13,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     public function testShouldThrowinvalidCacheConfigWhenInvalid($key, $invalidValue)
     {
         $cacheSettings = [
-            'host' => 'any.host.com',
-            'port' => 90,
-            'is_connectable' => true,
+            'adapter_namespace' => '/tmp',
             'adapter_name' => 'AdapterName',
         ];
 
@@ -27,23 +25,9 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     public function providerInvalidConfigs()
     {
         return [
-            ['host', null],
-            ['port', null],
+            ['adapter_namespace', 0],
             ['adapter_name', null],
-            ['is_connectable', null],
         ];
-    }
-
-    public function testShouldCreateConfigInstanceWhenNotIsConnectable()
-    {
-        $cacheSettings = [
-            'is_connectable' => false,
-            'adapter_name' => 'AdapterName',
-        ];
-
-        $config = new Config($cacheSettings);
-
-        $this->assertInstanceOf('Pcelta\Doctrine\Cache\Entity\Config', $config);
     }
 
     public function testShouldCreateConfigInstanceWhenIsConnectable()
@@ -51,8 +35,6 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         $cacheSettings = [
             'host' => 'any.host.com',
             'port' => 90,
-            'is_connectable' => true,
-            'adapter_name' => 'AdapterName',
             'adapter_name' => 'AdapterName',
         ];
 

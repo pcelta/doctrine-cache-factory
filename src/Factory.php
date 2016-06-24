@@ -3,28 +3,11 @@
 namespace Pcelta\Doctrine\Cache;
 
 use Pcelta\Doctrine\Cache\Entity\Config;
-use Pcelta\Doctrine\Cache\Exception\InvalidCacheConfig as InvalidCacheConfigException;
 use Doctrine\Common\Cache\CacheProvider;
+use Pcelta\Doctrine\Cache\Exception\InvalidCacheConfig;
 
 class Factory
 {
-    /**
-     * @var Proxy
-     */
-    private $proxy;
-
-    /**
-     * @return Proxy
-     */
-    private function getProxy()
-    {
-        if (!$this->proxy instanceof Proxy) {
-            $this->proxy = new Proxy();
-        }
-
-        return $this->proxy;
-    }
-
     /**
      * @param Proxy $proxy
      */
@@ -37,35 +20,22 @@ class Factory
      * @param array $cacheSettings
      *
      * @return CacheProvider
+     *
+     * @throws InvalidCacheConfig
      */
     public function create(array $cacheSettings)
     {
         $config = new Config($cacheSettings);
 
-        $cacheClassName = sprintf($config->getAdapterNamespace(), $config->getAdapterName());
+        $class = sprintf('\Pcelta\Doctrine\Cache\Factory\%sFactory', $config->getAdapterName());
 
-        if (!class_exists($cacheClassName)) {
-            throw new InvalidCacheConfigException('Cache Adapter Not Supported!');
+        if (!class_exists($class)) {
+            throw new InvalidCacheConfig('Adapter not found');
         }
 
-        $cacheProvider = new $cacheClassName();
+        /* @var Factory\AbstractFactory $factory */
+        $this->factory = new $class();
 
-        if ($config->isConnectable() === true) {
-            $this->addConnection($cacheProvider, $config);
-        }
-
-        return $cacheProvider;
-    }
-
-    /**
-     * @param CacheProvider $cacheProvider
-     * @param Config        $config
-     */
-    protected function addConnection(CacheProvider $cacheProvider, Config $config)
-    {
-        $connection = $this->getProxy()->getAdapter($config);
-
-        $setMethod = sprintf('set%s', $config->getAdapterName());
-        $cacheProvider->$setMethod($connection);
+        return $this->factory->create($config);
     }
 }
