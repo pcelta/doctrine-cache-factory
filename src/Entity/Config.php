@@ -12,6 +12,11 @@ class Config
     private $adapterName;
 
     /**
+     * @var string
+     */
+    private $adapterNamespace = '\Doctrine\Common\Cache\%sCache';
+
+    /**
      * @var array
      */
     private $settings = [];
@@ -26,8 +31,17 @@ class Config
         }
         $this->adapterName = $config['adapter_name'];
 
+
         unset($config['adapter_name']);
         $this->settings = $config;
+
+        if (isset($config['adapter_namespace'])) {
+            if (!is_string($config['adapter_namespace'])) {
+                throw new InvalidCacheConfig('Invalid Adapter Namespace. Is Not A String!');
+            }
+
+            $this->adapterNamespace = $config['adapter_namespace'];
+        }
     }
 
     /**
@@ -44,5 +58,13 @@ class Config
     public function getSettings()
     {
         return $this->settings;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdapterNamespace()
+    {
+        return $this->adapterNamespace;
     }
 }

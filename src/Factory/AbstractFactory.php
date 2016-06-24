@@ -47,10 +47,10 @@ abstract class AbstractFactory implements Factorable
     {
         $this->config = $config;
 
-        $cacheClassName = sprintf('\Doctrine\Common\Cache\%sCache', $this->config->getAdapterName());
+        $cacheClassName = sprintf($config->getAdapterNamespace(), $this->config->getAdapterName());
 
         if (!class_exists($cacheClassName)) {
-            throw new InvalidCacheConfigException('Cache Adapter Not Supported!');
+            throw new InvalidCacheConfig('Cache Adapter Not Supported!');
         }
 
         /** @var CacheProvider $cacheProvider */

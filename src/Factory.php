@@ -27,8 +27,9 @@ class Factory
         $config = new Config($cacheSettings);
 
         $class = sprintf('\Pcelta\Doctrine\Cache\Factory\%sFactory', $config->getAdapterName());
+
         if (!class_exists($class)) {
-            throw new InvalidCacheConfig('');
+            throw new InvalidCacheConfig('Adapter not found');
         }
 
         /** @var Factory\AbstractFactory $factory */

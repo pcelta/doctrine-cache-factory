@@ -21,10 +21,30 @@ Doctrine Cache Factory it's better way to uncouple your application of the cache
 
 ## Adapters Availables
 
+- Custom
 - Array
 - Memcache
 - Memcached
 - Redis
+
+
+## Write your own adapter
+Use the adapter namespace to specify the location of your adapter.
+```php
+
+use Pcelta\Doctrine\Cache\Factory;
+
+$factory = new Factory();
+$cacheSettings [
+    'adapter'           => 'Memcache',
+    'adapter_namespace' => '\Doctrine\Common\Cache\%sCache',
+    'host'              => '127.0.0.1',
+    'port'              => 11211,
+];
+
+$cacheProvider = $factory->create($cacheSettings);
+
+```
 
 
 ## How to use Array
