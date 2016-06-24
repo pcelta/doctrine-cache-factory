@@ -6,7 +6,7 @@ use Pcelta\Doctrine\Cache\Entity;
 class MemcacheFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Pcelta\Doctrine\Cache\Factory\Memcache::create
+     * @covers Pcelta\Doctrine\Cache\Factory\MemcacheFactory::create
      */
     public function testCreateShouldReturnMemcacheInstance()
     {
@@ -39,7 +39,7 @@ class MemcacheFactoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Pcelta\Doctrine\Cache\Exception\ModuleIsNotInstalled
-     * @covers Pcelta\Doctrine\Cache\Factory\Memcache::create
+     * @covers Pcelta\Doctrine\Cache\Factory\MemcacheFactory::create
      */
     public function testCreateShouldThrowsModuleIsNotInstalled()
     {

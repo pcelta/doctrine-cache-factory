@@ -5,7 +5,6 @@ use Pcelta\Doctrine\Cache\Entity;
 
 class ArrayFactoryTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testCreate()
     {
         $params = [

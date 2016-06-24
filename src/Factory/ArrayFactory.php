@@ -1,15 +1,12 @@
 <?php
 
-
 namespace Pcelta\Doctrine\Cache\Factory;
-
 
 use Doctrine\Common\Cache\CacheProvider;
 use Pcelta\Doctrine\Cache\Entity\Config;
 
 class ArrayFactory extends AbstractFactory
 {
-
     public function __construct()
     {
     }
@@ -24,6 +21,7 @@ class ArrayFactory extends AbstractFactory
 
     /**
      * @param CacheProvider $cacheProvider
+     *
      * @return CacheProvider
      */
     protected function decorateWithConnectable(CacheProvider $cacheProvider)
@@ -33,11 +31,11 @@ class ArrayFactory extends AbstractFactory
 
     /**
      * @param Config $config
+     *
      * @return bool
      */
     protected function isValidConfig(Config $config)
     {
         return true;
     }
-
 }

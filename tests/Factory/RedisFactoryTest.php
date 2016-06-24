@@ -5,7 +5,7 @@ use Pcelta\Doctrine\Cache\Factory;
 class RedisFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers Pcelta\Doctrine\Cache\Factory\Redis::create
+     * @covers Pcelta\Doctrine\Cache\Factory\RedisFactory::create
      * @covers Pcelta\Doctrine\Cache\Factory\AbstractFactory::__construct
      */
     public function testCreateShouldReturnRedisInstance()
@@ -39,6 +39,6 @@ class RedisFactoryTest extends \PHPUnit_Framework_TestCase
 
         $result = $factory->create($config);
 
-        $this->assertInstanceOf(\Redis::class, $result);
+        $this->assertInstanceOf(\Doctrine\Common\Cache\RedisCache::class, $result);
     }
 }

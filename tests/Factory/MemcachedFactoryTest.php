@@ -5,7 +5,6 @@ use Pcelta\Doctrine\Cache\Entity;
 
 class MemcachedFactoryTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @expectedException \Pcelta\Doctrine\Cache\Exception\ModuleIsNotInstalled
      * @covers Pcelta\Doctrine\Cache\Factory\AbstractFactory::__construct
@@ -22,7 +21,7 @@ class MemcachedFactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Pcelta\Doctrine\Cache\Factory\Memcached::create
+     * @covers Pcelta\Doctrine\Cache\Factory\MemcachedFactory::create
      * @covers Pcelta\Doctrine\Cache\Factory\AbstractFactory::__construct
      */
     public function testCreateShouldReturnMemcachedInstance()
@@ -30,7 +29,7 @@ class MemcachedFactoryTest extends \PHPUnit_Framework_TestCase
         $params = [
             'host' => '127.0.0.1',
             'port' => 11211,
-            'adapter_name' => 'Memcached'
+            'adapter_name' => 'Memcached',
         ];
 
         $config = new Entity\Config($params);

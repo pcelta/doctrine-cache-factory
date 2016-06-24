@@ -27,6 +27,7 @@ class RedisFactory extends AbstractFactory
 
     /**
      * @param CacheProvider $cacheProvider
+     *
      * @return CacheProvider
      */
     protected function decorateWithConnectable(CacheProvider $cacheProvider)
@@ -36,23 +37,23 @@ class RedisFactory extends AbstractFactory
         $redis->connect($settings['host'], $settings['port']);
 
         $cacheProvider->setRedis($redis);
+
         return $cacheProvider;
     }
 
     /**
      * @param Config $config
+     *
      * @return bool
      */
     protected function isValidConfig(Config $config)
     {
         $settings = $config->getSettings();
         if (!isset($settings['host'])) {
-
             return false;
         }
 
         if (!isset($settings['port'])) {
-
             return false;
         }
 

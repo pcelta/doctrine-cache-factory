@@ -31,7 +31,6 @@ class Config
         }
         $this->adapterName = $config['adapter_name'];
 
-
         unset($config['adapter_name']);
         $this->settings = $config;
 

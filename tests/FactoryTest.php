@@ -2,8 +2,6 @@
 
 namespace Pcelta\Doctrine\Cache;
 
-use Pcelta\Doctrine\Cache\Entity\Config;
-
 class FactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -12,7 +10,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldThrowInvalidCacheConfigWhenCacheProviderIsNotExists()
     {
         $cacheSettings = [
-            'adapter_name'      => 'Crazy',
+            'adapter_name' => 'Crazy',
         ];
 
         $factory = new Factory();

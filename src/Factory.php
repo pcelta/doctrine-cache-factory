@@ -5,7 +5,6 @@ namespace Pcelta\Doctrine\Cache;
 use Pcelta\Doctrine\Cache\Entity\Config;
 use Doctrine\Common\Cache\CacheProvider;
 use Pcelta\Doctrine\Cache\Exception\InvalidCacheConfig;
-use Pcelta\Doctrine\Cache\Factory;
 
 class Factory
 {
@@ -19,7 +18,9 @@ class Factory
 
     /**
      * @param array $cacheSettings
+     *
      * @return CacheProvider
+     *
      * @throws InvalidCacheConfig
      */
     public function create(array $cacheSettings)
@@ -32,8 +33,9 @@ class Factory
             throw new InvalidCacheConfig('Adapter not found');
         }
 
-        /** @var Factory\AbstractFactory $factory */
+        /* @var Factory\AbstractFactory $factory */
         $this->factory = new $class();
+
         return $this->factory->create($config);
     }
 }

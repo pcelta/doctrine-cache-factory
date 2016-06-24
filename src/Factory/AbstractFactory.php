@@ -40,7 +40,9 @@ abstract class AbstractFactory implements Factorable
 
     /**
      * @param Config $config
+     *
      * @return CacheProvider
+     *
      * @throws InvalidCacheConfigException
      */
     public function create(Config $config)
@@ -56,22 +58,22 @@ abstract class AbstractFactory implements Factorable
         /** @var CacheProvider $cacheProvider */
         $cacheProvider = new $cacheClassName();
         if (!$this->isValidConfig($this->config)) {
-
             throw new InvalidCacheConfig('Options Not Supported Passed');
         }
 
         return $this->decorateWithConnectable($cacheProvider);
-
     }
 
     /**
      * @param CacheProvider $cacheProvider
+     *
      * @return CacheProvider
      */
     abstract protected function decorateWithConnectable(CacheProvider $cacheProvider);
 
     /**
      * @param Config $config
+     *
      * @return bool
      */
     abstract protected function isValidConfig(Config $config);
