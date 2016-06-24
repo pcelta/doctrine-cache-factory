@@ -21,10 +21,31 @@ Doctrine Cache Factory it's better way to uncouple your application of the cache
 
 ## Adapters Availables
 
+- Custom
 - Array
 - Memcache
 - Memcached
 - Redis
+
+
+## Write your own adapter
+Use the adapter namespace to specify the location of your adapter.
+```php
+
+use Pcelta\Doctrine\Cache\Factory;
+
+$factory = new Factory();
+$cacheSettings [
+    'adapter'           => 'Memcache',
+    'adapter_namespace' => '\Doctrine\Common\Cache\%sCache',
+    'host'              => '127.0.0.1',
+    'port'              => 11211,
+    'is_connectable'    => false
+];
+
+$cacheProvider = $factory->create($cacheSettings);
+
+```
 
 
 ## How to use Array
@@ -35,8 +56,8 @@ use Pcelta\Doctrine\Cache\Factory;
 
 $factory = new Factory();
 $cacheSettings [
-    'adapter'       => 'Array',
-    'connectable'   => false
+    'adapter'          => 'Array',
+    'is_connectable'   => false
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -59,10 +80,10 @@ use Pcelta\Doctrine\Cache\Factory;
 
 $factory = new Factory();
 $cacheSettings [
-    'adapter'       => 'Memcache',
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true
+    'adapter'          => 'Memcache',
+    'host'             => '127.0.0.1',
+    'port'             => 11211,
+    'is_connectable'   => true
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -86,10 +107,10 @@ use Pcelta\Doctrine\Cache\Factory;
 
 $factory = new Factory();
 $cacheSettings [
-    'adapter'       => 'Memcached',
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true
+    'adapter'          => 'Memcache',
+    'host'             => '127.0.0.1',
+    'port'             => 11211,
+    'is_connectable'   => true
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -116,10 +137,10 @@ use Pcelta\Doctrine\Cache\Factory;
 
 $factory = new Factory();
 $cacheSettings [
-    'adapter'       => 'Redis',
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true
+    'adapter'          => 'Redis',
+    'host'             => '127.0.0.1',
+    'port'             => 11211,
+    'is_connectable'   => true
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -134,10 +155,10 @@ use Pcelta\Doctrine\Cache\Factory;
 
 $factory = new Factory();
 $cacheSettings [
-    'adapter'       => 'Memcache',
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true // If not need of one connection put FALSE
+    'adapter'          => 'Memcache',
+    'host'             => '127.0.0.1',
+    'port'             => 11211,
+    'is_connectable'   => true // If not need of one connection put FALSE
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -172,10 +193,10 @@ $cacheDriver->save('cache_id', 'my_data');
 
 $factory = new \Pcelta\Doctrine\Cache\Factory();
 $cacheSettings [
-    'adapter'       => 'Memcache', // very better
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true
+    'adapter'          => 'Memcache', // very better
+    'host'             => '127.0.0.1',
+    'port'             => 11211,
+    'is_connectable'   => true
 ];
 
 $cacheProvider = $factory->create($cacheSettings); 

@@ -42,7 +42,7 @@ class Factory
     {
         $config = new Config($cacheSettings);
 
-        $cacheClassName = sprintf('\Doctrine\Common\Cache\%sCache', $config->getAdapterName());
+        $cacheClassName = sprintf($config->getAdapterNamespace(), $config->getAdapterName());
 
         if (!class_exists($cacheClassName)) {
             throw new InvalidCacheConfigException('Cache Adapter Not Supported!');

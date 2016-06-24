@@ -12,6 +12,11 @@ class Config
     private $adapterName;
 
     /**
+     * @var string
+     */
+    private $adapterNamespace = '\Doctrine\Common\Cache\%sCache';
+
+    /**
      * @var bool
      */
     private $isConnectable;
@@ -54,6 +59,14 @@ class Config
             throw new InvalidCacheConfig('Invalid Port Number. Is Not An Integer OR Is Missing!');
         }
         $this->port = $config['port'];
+
+        if (isset($config['adapter_namespace'])) {
+            if (!is_string($config['adapter_namespace'])) {
+                throw new InvalidCacheConfig('Invalid Adapter Namespace. Is Not A String!');
+            }
+
+            $this->adapterNamespace = $config['adapter_namespace'];
+        }
     }
 
     /**
@@ -86,5 +99,13 @@ class Config
     public function getHost()
     {
         return $this->host;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdapterNamespace()
+    {
+        return $this->adapterNamespace;
     }
 }
