@@ -36,7 +36,6 @@ use Pcelta\Doctrine\Cache\Factory;
 $factory = new Factory();
 $cacheSettings [
     'adapter'       => 'Array',
-    'connectable'   => false
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -59,10 +58,9 @@ use Pcelta\Doctrine\Cache\Factory;
 
 $factory = new Factory();
 $cacheSettings [
-    'adapter'       => 'Memcache',
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true
+    'adapter_name' => 'Memcache',
+    'host'         => '127.0.0.1',
+    'port'         => 11211,
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -86,10 +84,9 @@ use Pcelta\Doctrine\Cache\Factory;
 
 $factory = new Factory();
 $cacheSettings [
-    'adapter'       => 'Memcached',
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true
+    'adapter_name' => 'Memcached',
+    'host'         => '127.0.0.1',
+    'port'         => 11211,
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -116,10 +113,9 @@ use Pcelta\Doctrine\Cache\Factory;
 
 $factory = new Factory();
 $cacheSettings [
-    'adapter'       => 'Redis',
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true
+    'adapter_name' => 'Redis',
+    'host'         => '127.0.0.1',
+    'port'         => 11211,
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -134,10 +130,9 @@ use Pcelta\Doctrine\Cache\Factory;
 
 $factory = new Factory();
 $cacheSettings [
-    'adapter'       => 'Memcache',
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true // If not need of one connection put FALSE
+    'adapter_name' => 'Memcache',
+    'host'         => '127.0.0.1',
+    'port'         => 11211,
 ];
 
 $cacheProvider = $factory->create($cacheSettings);
@@ -172,10 +167,9 @@ $cacheDriver->save('cache_id', 'my_data');
 
 $factory = new \Pcelta\Doctrine\Cache\Factory();
 $cacheSettings [
-    'adapter'       => 'Memcache', // very better
-    'host'          => '127.0.0.1',
-    'port'          => 11211,
-    'connectable'   => true
+    'adapter_name' => 'Memcache', // very better
+    'host'         => '127.0.0.1',
+    'port'         => 11211,
 ];
 
 $cacheProvider = $factory->create($cacheSettings); 

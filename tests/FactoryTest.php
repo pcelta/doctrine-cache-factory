@@ -2,6 +2,8 @@
 
 namespace Pcelta\Doctrine\Cache;
 
+use Pcelta\Doctrine\Cache\Entity\Config;
+
 class FactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -10,41 +12,17 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldThrowInvalidCacheConfigWhenCacheProviderIsNotExists()
     {
         $cacheSettings = [
-            'host' => '127.0.0.1',
-            'port' => 11211,
             'adapter_name' => 'Crazy',
-            'is_connectable' => true,
         ];
 
         $factory = new Factory();
         $factory->create($cacheSettings);
     }
 
-    public function testShouldCreateCacheProviderConnectable()
-    {
-        $cacheSettings = [
-            'host' => '127.0.0.1',
-            'port' => 11211,
-            'adapter_name' => 'Memcached',
-            'is_connectable' => true,
-        ];
-
-        $factory = $this->getMockBuilder('Pcelta\Doctrine\Cache\Factory')
-            ->disableOriginalConstructor()
-            ->setMethods(['addConnection'])
-            ->getMock();
-        $factory->expects($this->once())
-            ->method('addConnection');
-
-        $result = $factory->create($cacheSettings);
-
-        $this->assertInstanceOf('Doctrine\Common\Cache\CacheProvider', $result);
-    }
     public function testShouldCreateCacheProviderNonConnectable()
     {
         $cacheSettings = [
             'adapter_name' => 'Array',
-            'is_connectable' => false,
         ];
 
         $factory = new Factory();
@@ -59,6 +37,6 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $factory->setProxy($mockedProxy);
         $result = $factory->create($cacheSettings);
 
-        $this->assertInstanceOf('Doctrine\Common\Cache\CacheProvider', $result);
+        $this->assertInstanceOf('Doctrine\Common\Cache\ArrayCache', $result);
     }
 }
