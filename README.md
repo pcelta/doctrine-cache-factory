@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/packagist/l/pcelta/doctrine-cache-factory.svg?style=flat-square)](https://packagist.org/packages/pcelta/doctrine-cache-factory)
 
 # doctrine-cache-factory
-Doctrine Cache Factory it's better way to uncouple your application of the cache adapters. Changing the configuration only the factory will load a difference client.
+Doctrine Cache Factory it's better way to uncouple your application of the cache adapters. Changing just the configuration the factory will load a different client.
 
 ## Instalation
 
@@ -187,7 +187,7 @@ $cacheDriver->save('cache_id', 'my_data');
 
 $factory = new \Pcelta\Doctrine\Cache\Factory();
 $cacheSettings [
-    'adapter_name' => 'Memcache', // very better
+    'adapter_name' => 'Memcache', // it's much better
     'host'         => '127.0.0.1',
     'port'         => 11211,
 ];
