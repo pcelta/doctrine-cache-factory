@@ -2,9 +2,8 @@
 
 use Pcelta\Doctrine\Cache\Factory;
 use Pcelta\Doctrine\Cache\Entity;
-use PHPUnit\Framework\TestCase;
 
-class MemcachedFactoryTest extends TestCase
+class MemcachedFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException \Pcelta\Doctrine\Cache\Exception\ModuleIsNotInstalled

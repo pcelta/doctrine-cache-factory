@@ -2,9 +2,7 @@
 
 namespace Pcelta\Doctrine\Cache;
 
-use PHPUnit\Framework\TestCase;
-
-class FactoryTest extends TestCase
+class FactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException \Pcelta\Doctrine\Cache\Exception\InvalidCacheConfig

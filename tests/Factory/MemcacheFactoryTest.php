@@ -2,9 +2,8 @@
 
 use Pcelta\Doctrine\Cache\Factory;
 use Pcelta\Doctrine\Cache\Entity;
-use PHPUnit\Framework\TestCase;
 
-class MemcacheFactoryTest extends TestCase
+class MemcacheFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers Pcelta\Doctrine\Cache\Factory\MemcacheFactory::create

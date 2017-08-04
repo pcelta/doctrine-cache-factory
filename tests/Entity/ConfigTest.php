@@ -2,9 +2,7 @@
 
 namespace Pcelta\Doctrine\Cache\Entity;
 
-use PHPUnit\Framework\TestCase;
-
-class ConfigTest extends TestCase
+class ConfigTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @param $key
