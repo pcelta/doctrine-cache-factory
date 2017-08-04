@@ -2,8 +2,9 @@
 
 use Pcelta\Doctrine\Cache\Factory;
 use Pcelta\Doctrine\Cache\Entity;
+use PHPUnit\Framework\TestCase;
 
-class ArrayFactoryTest extends \PHPUnit_Framework_TestCase
+class ArrayFactoryTest extends TestCase
 {
     public function testCreate()
     {

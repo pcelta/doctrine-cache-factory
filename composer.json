@@ -20,7 +20,7 @@
         "doctrine/cache": "^1.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "@stable",
+        "phpunit/phpunit": "6.3.0",
         "fabpot/php-cs-fixer": "@stable"
     },
     "autoload": {

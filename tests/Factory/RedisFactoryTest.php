@@ -1,8 +1,9 @@
 <?php
 
 use Pcelta\Doctrine\Cache\Factory;
+use PHPUnit\Framework\TestCase;
 
-class RedisFactoryTest extends \PHPUnit_Framework_TestCase
+class RedisFactoryTest extends TestCase
 {
     /**
      * @covers Pcelta\Doctrine\Cache\Factory\RedisFactory::create
